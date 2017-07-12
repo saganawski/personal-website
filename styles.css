@@ -13,7 +13,7 @@ body {
 	border: 5px solid white;
 }
 
-.page-title	{
+.page-title, .project-title {
 	text-align: center;
 }
 
