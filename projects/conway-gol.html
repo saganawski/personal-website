@@ -7,74 +7,210 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-  <script>
-	  $(document).ready(function(){
-	    $('.button-collapse').sideNav({
-	      menuWidth: 400,
-	      edge: 'left',
-	      closeOnClick: true,
-	      draggable: true
-	    });
-	    $('.slider').slider();
-	  });
-  </script>
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+<!-- 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+  <script type="text/javascript" src="conway.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$('.button-collapse').sideNav({
+				menuWidth: 400,
+				edge: 'left',
+				closeOnClick: true,
+				draggable: true
+			});
+			$('.slider').slider();
+		});
+	</script>
 </head>
 <body>
 
-	 <ul id="slide-out" class="side-nav blue-grey">
+	<ul id="slide-out" class="side-nav blue-grey">
 
-    <li><a href="../index.html"><span class="white-text name">Home</span></a></li>
-    <li><div class="user-view">
-      <img class="circle profile" src="../images/puppy-and-dad.jpg">
+		<li><a href="../index.html"><span class="white-text name">Home</span></a></li>
+		<li><div class="user-view">
+			<img class="circle profile" src="../images/puppy-and-dad.jpg">
 
-      <li><span class="email">saganawski+dev@gmail.com</span></li>
-    </div></li>
-	  <li><a href="../images/KennethSaganski.pdf" target="_blank"><span>Resume</span></a></li>
-	  <li><a href="https://www.linkedin.com/in/ken-saganski/"><span >Linkedin</span></a></li>
-    <li><a href="https://github.com/saganawski"><span >GitHub</span></a></li>
-    <li><a href="../projects.html"><span >Projects</span></a></li>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+			<li><span class="email">saganawski+dev@gmail.com</span></li>
+		</div></li>
+		<li><a href="../images/KennethSaganski.pdf" target="_blank"><span>Resume</span></a></li>
+		<li><a href="https://www.linkedin.com/in/ken-saganski/"><span >Linkedin</span></a></li>
+		<li><a href="https://github.com/saganawski"><span >GitHub</span></a></li>
+		<li><a href="../projects.html"><span >Projects</span></a></li>
+	</ul>
+	<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
 
 	<div class="row">
-    <div class="col s12 m6 offset-m3"">
-      <div class="card blue-grey darken-4">
-        <div class="card-content white-text">
-          <h3 class="project-title">Conway Game of Life</h3>
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="col s12 m6 offset-m3"">
+			<div class="card blue-grey darken-4">
+				<div class="card-content white-text">
+					<h3 class="project-title">Conway Game of Life</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col s12 m6 offset-m3"">
-      <div class="card blue-grey darken-4">
-        <div class="card-content white-text">
-          <p class="project-title">
-          	The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. <br> <br>
+	<div class="row">
+		<div class="col s12 m6 offset-m3"">
+			<div class="card blue-grey darken-4">
+				<div class="card-content white-text">
+					<p class="project-title">
+						The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. <br> <br>
 
-			The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
-			<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia origin</a>
+						The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
+						<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia origin</a>
 
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>    
+					</p>
+				</div>
+			</div>
+		</div>
+	</div> 
 
+	<div class="row">
+		<div class="col s12 m6 offset-m3"">
+			<div class="card blue-grey darken-4">
+				<div class="card-content white-text">   
+	<table class="conway-grid">
+		<tbody>
+			<tr id='0'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='1'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='2'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='3'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='4'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='5'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='6'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='7'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='8'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+			<tr id='9'>
+				<td class="1">&nbsp;</td>
+				<td class="2">&nbsp;</td>
+				<td class="3">&nbsp;</td>
+				<td class="4">&nbsp;</td>
+				<td class="5">&nbsp;</td>
+				<td class="6">&nbsp;</td>
+				<td class="7">&nbsp;</td>
+				<td class="8">&nbsp;</td>
+				<td class="9">&nbsp;</td>
+				<td class="10">&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col s12 m6 offset-m3"">
-      <div class="card blue-grey darken-4">
-        <div class="card-content white-text">
-          <h5 class="project-title"><a href="https://github.com/saganawski/Conway">Github Project link</a></h5>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col s12 m6 offset-m3"">
+			<div class="card blue-grey darken-4">
+				<div class="card-content white-text">
+					<h5 class="project-title"><a href="https://github.com/saganawski/Conway">Github Project link</a></h5>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
