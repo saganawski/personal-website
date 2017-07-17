@@ -1,5 +1,55 @@
 $(document).ready(function(){
 
+	var Game = function(board){
+		this.board = board;
+	};
+
+	Game.prototype.tick = function(){
+		nextRoundLiveCells = [];
+		nextRoundDeadCells = [];
+
+		for (var i = this.board.cellGrid.length - 1; i >= 0; i--) {
+			for (var j = this.board.cellGrid[i].length - 1; j >= 0; j--) {
+				var cell = this.board.cellGrid[i][j]
+				var liveNeighborsCount = this.board.liveNeighbors(cell).length
+
+				// rule 1
+    		//   	any live cell with fewer then two live neighbors dies
+
+    		if (cell.alive === true && liveNeighborsCount < 2) {
+    			nextRoundDeadCells.push(cell);
+    		};
+
+    		// rule 2
+    		// any live cell with two or three live neighbors lives on to the next generation
+    		if (cell.allive === true && liveNeighborsCount === 2 || liveNeighborsCount === 3) {
+    			nextRoundLiveCells.push(cell);
+    		};
+
+    		// rule 3
+    		//  any live cell with more than 3 live neighbors dies
+
+    		if (cell.alive === true && liveNeighborsCount > 3) {
+    			nextRoundLiveCells.push(cell);
+    		};
+
+    		// Rule 4
+    		//  any dead cell with exactly three live neighbors becomes alive
+    		if (cell.alive === false && liveNeighborsCount === 3) {
+    			nextRoundLiveCells.push(cell)
+    		};
+			};
+		};
+
+		for (var i = nextRoundLiveCells.length - 1; i >= 0; i--) {
+			nextRoundLiveCells[i].revive();
+		}
+
+		for (var i = nextRoundDeadCells.length - 1; i >= 0; i--) {
+			nextRoundDeadCells[i].kill();
+		}
+	};
+
 	var Board = function(rows,cols){
 		this.rows = rows;
 		this.cols = cols;
@@ -7,7 +57,6 @@ $(document).ready(function(){
 		// creates 2d grid
 		for (var i = this.cellGrid.length - 1; i >= 0; i--) {
 			this.cellGrid[i] = new Array(cols);
-			console.log(i)
 		};
 		// populates 2d grid
 		// TODO look into refactoring into the creation of the the 2d array
@@ -21,6 +70,7 @@ $(document).ready(function(){
 
 	Board.prototype.liveNeighbors = function(cell){
 		liveNeighborsArray = []
+
 		// neighbor to the north
 		if(cell.y > 0){
 			canidate = this.cellGrid[cell.y - 1][cell.x];
@@ -38,7 +88,7 @@ $(document).ready(function(){
 		};
 
 		// neighbor to the east
-		if(cell.x < cols - 1){
+		if(cell.x < this.cols - 1){
 			canidate = this.cellGrid[cell.y][cell.x + 1]
 			if(canidate.alive === true){
 				liveNeighborsArray.push(canidate);
@@ -54,7 +104,7 @@ $(document).ready(function(){
 		};
 
 		//  neighbor to the north east
-		if (cell.y > 0 && cell.x < cols - 1) {
+		if (cell.y > 0 && cell.x < this.cols - 1) {
 			canidate = this.cellGrid[cell.y - 1][cell.x + 1]
 			if(canidate.alive === true){
 				liveNeighborsArray.push(canidate);
@@ -70,7 +120,7 @@ $(document).ready(function(){
 		};
 
 		// neighbor to teh south east
-		if (cell.y < this.rows - 1 && cell.x < cols -1) {
+		if (cell.y < this.rows - 1 && cell.x < this.cols -1) {
 			canidate = this.cellGrid[cell.y + 1][cell.x + 1]
 			if(canidate.alive === true){
 				liveNeighborsArray.push(canidate);
@@ -85,16 +135,16 @@ $(document).ready(function(){
 			};
 		};
 
-		return liveNeighbors
+		return liveNeighborsArray
 	};
 
 	Board.prototype.randomolyPopulate = function(){
 		tfArray = [true, false];
-		var rand = tfArray[Math.floor(Math.random() * tfArray.length)]
+		// var rand = tfArray[Math.floor(Math.random() * tfArray.length)]
 
 		for (var i = this.cellGrid.length - 1; i >= 0; i--) {
 			for (var j = this.cellGrid[i].length - 1; j >= 0; j--) {
-				this.cellGrid[i][j].alive = rand;
+				this.cellGrid[i][j].alive = tfArray[Math.floor(Math.random() * tfArray.length)];
 			};		
 		};
 	};
@@ -113,12 +163,12 @@ $(document).ready(function(){
 
 	Board.prototype.display = function(game){
 		// remove class from all 
-		for (i = 0; i < 10; i++){
+		for (i = 0; i < game.board.length; i++){
 			$('.' + i + '').removeClass('active')
 		}
 		// If cell alive find html grid add active class to display 
 		for (var i = game.board.cellGrid.length - 1; i >= 0; i--) {
-			for (var i = game.board.cellGrid[i].length - 1; i >= 0; i--) {
+			for (var j = game.board.cellGrid[i].length - 1; j >= 0; j--) {
 				cell = game.board.cellGrid[i][j]
 				if (cell.alive) {
 					$('#' + cell.x + '').find('.' + cell.y + '').addClass('active')
@@ -160,6 +210,23 @@ $(document).ready(function(){
 // console.log(board.cellGrid[2][0])
 // console.log(board.cellGrid[1][1])
 
+board = new Board(10,10);
+game = new Game(board);
+
+game.board.randomolyPopulate();
+	game.board.display(game);
+
+	// game.tick()
+
+	// game.board.display(game)
+
+
+// while	(game.board.liveCount(game) > 0){
+// 	setTimeout(function(){
+// 		game.board.display(game);
+// 		game.tick()
+// 	}, 1000);
+// }
 
 
 });
