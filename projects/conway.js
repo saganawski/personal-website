@@ -13,31 +13,31 @@ $(document).ready(function(){
 				var cell = this.board.cellGrid[i][j]
 				var liveNeighborsCount = this.board.liveNeighbors(cell).length
 
-				// rule 1
-    		//   	any live cell with fewer then two live neighbors dies
-
-    		if (cell.alive === true && liveNeighborsCount < 2) {
-    			nextRoundDeadCells.push(cell);
-    		};
-
-    		// rule 2
-    		// any live cell with two or three live neighbors lives on to the next generation
-    		if (cell.allive === true && liveNeighborsCount === 2 || liveNeighborsCount === 3) {
-    			nextRoundLiveCells.push(cell);
-    		};
-
-    		// rule 3
-    		//  any live cell with more than 3 live neighbors dies
-
-    		if (cell.alive === true && liveNeighborsCount > 3) {
-    			nextRoundLiveCells.push(cell);
-    		};
-
-    		// Rule 4
-    		//  any dead cell with exactly three live neighbors becomes alive
-    		if (cell.alive === false && liveNeighborsCount === 3) {
-    			nextRoundLiveCells.push(cell)
-    		};
+					// rule 1
+    			//   	any live cell with fewer then two live neighbors dies
+	
+    			if (cell.alive === true && liveNeighborsCount < 2) {
+    				nextRoundDeadCells.push(cell);
+    			};
+	
+    			// rule 2
+    			// any live cell with two or three live neighbors lives on to the next generation
+    			if (cell.allive === true && liveNeighborsCount === 2 || liveNeighborsCount === 3) {
+    				nextRoundLiveCells.push(cell);
+    			};
+	
+    			// rule 3
+    			//  any live cell with more than 3 live neighbors dies
+	
+    			if (cell.alive === true && liveNeighborsCount > 3) {
+    				nextRoundLiveCells.push(cell);
+    			};
+	
+    			// Rule 4
+    			//  any dead cell with exactly three live neighbors becomes alive
+    			if (cell.alive === false && liveNeighborsCount === 3) {
+    				nextRoundLiveCells.push(cell)
+    			};
 			};
 		};
 
@@ -205,7 +205,6 @@ var counter = 0;
 var i = setInterval(function(){
     game.board.display(game);
 		game.tick();
-		console.log(counter)
     counter++;
     if(counter === 10) {
         clearInterval(i);
