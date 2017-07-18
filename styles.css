@@ -17,3 +17,12 @@ body {
 	text-align: center;
 }
 
+.conway-grid td {
+  background-color: white;
+  height: 10px;
+  width: 10px;
+}
+
+.conway-grid td.active {
+	background-color: black;
+}
