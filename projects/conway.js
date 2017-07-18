@@ -195,38 +195,22 @@ $(document).ready(function(){
 	Cell.prototype.revive = function(){
 		this.alive = true;
 	};
-
-
-// cell = new Cell(5,10);
-// console.log(cell.x);
-// console.log(cell.y);
-// cell.revive();
-// console.log(cell.alive);
-// cell.kill();
-// console.log(cell.alive)
-
-// board = new Board(3,3)
-// console.log(board.cellGrid)
-// console.log(board.cellGrid[2][0])
-// console.log(board.cellGrid[1][1])
-
+// starts a new game 
 board = new Board(10,10);
 game = new Game(board);
 
 game.board.randomolyPopulate();
-	game.board.display(game);
-
-	// game.tick()
-
-	// game.board.display(game)
-
-
-// while	(game.board.liveCount(game) > 0){
-// 	setTimeout(function(){
-// 		game.board.display(game);
-// 		game.tick()
-// 	}, 1000);
-// }
+// delays tick
+var counter = 0;
+var i = setInterval(function(){
+    game.board.display(game);
+		game.tick();
+		console.log(counter)
+    counter++;
+    if(counter === 10) {
+        clearInterval(i);
+    }
+	}, 1000);
 
 
 });
