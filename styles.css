@@ -26,3 +26,8 @@ body {
 .conway-grid td.active {
 	background-color: black;
 }
+
+.subtext {
+	text-align: center;
+	font-size: 18px;
+}
